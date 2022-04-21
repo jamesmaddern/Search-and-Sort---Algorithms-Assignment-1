@@ -2,34 +2,30 @@
 {
     public string path;
     List<string> files = new List<string>();
-    public List<string[]> fileContent = new List<string[]>();
+    public List<Share> shares = new List<Share>();
 
     public Reader()
     {
         Directory.SetCurrentDirectory(@"..\..\..\");
         path = Directory.GetCurrentDirectory();
         getFileNames();
-        readFiles();
+        
 
     }
     private void getFileNames()
     {
         int i = -1;
-        foreach(string filename in Directory.GetFiles(path))
+        foreach(string filePath in Directory.GetFiles(path))
         {
-            if (filename.EndsWith(".txt"))
+            if (filePath.EndsWith(".txt"))
             {
-                files.Add(filename);
+                files.Add(filePath);
+                string file = Path.GetFileName(filePath);
+                Share share = new Share(file,filePath);
+                shares.Add(share);
             }
         }
         Console.WriteLine(files);
     }
-    private void readFiles()
-    {
-        for(int i = 0; i < files.Count; i++)
-        {
-            string filename = files[i];
-            fileContent.Add(File.ReadAllLines(filename));
-        }
-    }
-}
+    
+} 

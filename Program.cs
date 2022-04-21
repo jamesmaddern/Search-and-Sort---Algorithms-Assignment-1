@@ -1,5 +1,6 @@
 ﻿internal class Program
 {
+
     public static void Main(string[] args)
     {
         /*Program program = new Program();
@@ -10,14 +11,8 @@
         program.write(file);
         */
         Reader r = new Reader();
-        foreach(string[] f in r.fileContent)
-        {
-            foreach(string item in f)
-            {
-                Console.WriteLine(item);
-            }
-        }
-        
+        Console.WriteLine(r.shares[0].filename);
+
     }
 
     /*public async void write(string file)
