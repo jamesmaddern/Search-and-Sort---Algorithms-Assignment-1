@@ -2,7 +2,7 @@
 {
     public string filename;
     string path;
-    List<int> content = new List<int>();
+    public List<int> content = new List<int>();
     public Share(string fileName, string filePath)
     {
         filename = fileName;
