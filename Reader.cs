@@ -9,8 +9,6 @@
         Directory.SetCurrentDirectory(@"..\..\..\");
         path = Directory.GetCurrentDirectory();
         getFileNames();
-        
-
     }
     private void getFileNames()
     {

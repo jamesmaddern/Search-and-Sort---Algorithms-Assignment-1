@@ -10,7 +10,8 @@
         string file = Path.Combine(path, "hello.txt");
         program.write(file);
         */
-        tester();
+        //tester();
+        searchTester();
     }
     static void tester()
     {
@@ -56,7 +57,27 @@
         }
         b4.getSteps();
     }
+    static void searchTester()
+    {
+        Reader reader = new Reader();
+        Sorter sorter = new Sorter(reader.shares[1].content);
+        List<int> sortedList = sorter.quickSort(sorter.fileContent);
+        Searcher s = new Searcher();
+        List<int> indicies = s.BinarySearch(sortedList, 14);
+        if(indicies.Count > 0)
+        {
+            foreach(int i in indicies)
+            {
+                Console.WriteLine(sortedList[i]);
+                Console.WriteLine("target found at index:" + i);
 
+            }
+        }
+        else
+        {
+            Console.WriteLine("target not found");
+        }
+    }
     /*public async void write(string file)
     {
         await File.WriteAllTextAsync(file, "hello there");
