@@ -12,7 +12,7 @@
     }
     private void getFileNames()
     {
-        int i = -1;
+        
         foreach(string filePath in Directory.GetFiles(path))
         {
             if (filePath.EndsWith(".txt"))
@@ -23,7 +23,7 @@
                 shares.Add(share);
             }
         }
-        Console.WriteLine(files);
+        
     }
     
 } 

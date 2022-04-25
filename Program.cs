@@ -1,18 +1,89 @@
 ﻿internal class Program
 {
 
+    Reader r = new Reader();
     public static void Main(string[] args)
     {
-        /*Program program = new Program();
-
-        string path = Environment.CurrentDirectory;
-        path = Directory.GetParent(path).FullName;
-        string file = Path.Combine(path, "hello.txt");
-        program.write(file);
-        */
+        Program p = new Program();
+        Console.WriteLine("Search and Sort Program");
+        Console.WriteLine("--MENU--");
+        Console.Write("1.Sort\n2.Search\n3.Auto Generate Results\n-------\n0.Exit\n\nChoice: ");
+        char option = Console.ReadKey().KeyChar;
+        Console.WriteLine();
+        switch (option)
+        {
+            case '1':
+                p.sortMenu();
+                break;
+            case '2':
+                Console.WriteLine();
+                break;
+            case '3':
+                Console.WriteLine();
+                break;
+            case '0':
+                Console.WriteLine();
+                break;
+            default:
+                break;
+        }
         //tester();
-        searchTester();
+        //searchTester();
     }
+    void printFiles()
+    {
+        
+        for(int i = 0; i < r.shares.Count; i++)
+        {
+            Console.WriteLine(i+1 +". " + r.shares[i].filename);
+        }        
+    }
+    void sortMenu()
+    {
+        bool valid = false;        
+        Share file;
+        HashSet<char> validKeys = new HashSet<char>();
+        for (int i = 1; i < 8; i++)
+        {
+            string s = i.ToString();
+
+            validKeys.Add(Convert.ToChar(s));
+        }
+        while (!valid) 
+        {
+            Console.Clear();
+            Console.WriteLine("Choose file to Sort");
+            Console.WriteLine("--MENU--");
+            printFiles();
+            char option = Console.ReadKey().KeyChar;
+            Console.WriteLine();            
+
+            if (validKeys.Contains(option))
+            {
+                valid = true;
+                string i = option.ToString();
+                file = r.shares[Convert.ToInt16(i) - 1];
+            }
+            else
+            {
+                Console.WriteLine("WRONG");
+                valid = false;
+                Thread.Sleep(1000);
+            }            
+        }
+        valid = false;
+        while (!valid)
+        {
+            Console.Clear();
+            Console.WriteLine("Choose Sorting Method");
+            Console.WriteLine("--MENU--");
+            Console.WriteLine("1.Bubble Sort");
+        }
+
+        
+
+    }
+     
     static void tester()
     {
         Reader r = new Reader();
