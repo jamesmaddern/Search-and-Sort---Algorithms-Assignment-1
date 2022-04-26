@@ -3,6 +3,10 @@
     public string filename;
     string path;
     public List<int> content = new List<int>();
+    public Share()
+    {
+
+    }
     public Share(string fileName, string filePath)
     {
         filename = fileName;

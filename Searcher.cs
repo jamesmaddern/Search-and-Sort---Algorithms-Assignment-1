@@ -5,6 +5,10 @@
     {
         steps = 0;
     }
+    public void getSteps()
+    {
+        Console.WriteLine("Steps: " + steps);
+    }
     public List<int> BinarySearch(List<int> array, int target)
     {
         List<int> indicies = new List<int>();
@@ -54,6 +58,7 @@
             if (array[i] == target)
             {
                 do
+                
                 {
                     indicies.Add(i);
                     i++;
