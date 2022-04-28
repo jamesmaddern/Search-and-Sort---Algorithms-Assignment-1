@@ -4,27 +4,31 @@
     public static void Main(string[] args)
     {
         Program p = new Program();
-        Console.WriteLine("Search and Sort Program");
-        Console.WriteLine("--MENU--");
-        Console.Write("1.Sort\n2.Search\n3.Auto Generate Results\n-------\n0.Exit\n\nChoice: ");
-        char option = Console.ReadKey().KeyChar;
-        Console.WriteLine();
-        switch (option)
+        bool exit = false;
+        while (!exit)
         {
-            case '1':
-                p.sortMenu();
-                break;
-            case '2':
-                p.searchMenu();
-                break;
-            case '3':
-                Console.WriteLine();
-                break;
-            case '0':
-                Console.WriteLine();
-                break;
-            default:
-                break;
+            Console.WriteLine("Search and Sort Program");
+            Console.WriteLine("--MENU--");
+            Console.Write("1.Sort\n2.Search\n------\n0.Exit\n\nChoice: ");
+            char option = Console.ReadKey().KeyChar;
+            Console.WriteLine();
+            switch (option)
+            {
+                case '1':
+                    p.sortMenu();
+                    break;
+                case '2':
+                    p.searchMenu();
+                    break;               
+                case '0':
+                    Console.WriteLine("Goodbye!");
+                    exit = true;
+                    break;
+                default:
+                    Console.WriteLine("Invalid Input");                    
+                    Thread.Sleep(1000);
+                    break;
+            }
         }
         //searchTester();
     }
@@ -71,7 +75,7 @@
             }
             else
             {
-                Console.WriteLine("WRONG");
+                Console.WriteLine("Invalid Input");
                 valid = false;
                 Thread.Sleep(1000);
             }
@@ -96,7 +100,7 @@
             }
             catch (Exception e)
             {
-                Console.WriteLine(e);
+                Console.WriteLine("Invalid Input, must be a 32 bit Integer");
             }
         }
 
@@ -120,7 +124,7 @@
                     Search(file, 1, target);
                     break;                
                 default:
-                    Console.WriteLine("WRONG");
+                    Console.WriteLine("Invalid Input");
                     valid = false;
                     Thread.Sleep(1000);
                     break;
@@ -158,7 +162,7 @@
                     Sort(file, 3);
                     break;
                 default:
-                    Console.WriteLine("WRONG");
+                    Console.WriteLine("Invalid Input");
                     valid = false;
                     Thread.Sleep(1000);
                     break;
