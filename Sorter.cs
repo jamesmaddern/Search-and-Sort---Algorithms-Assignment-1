@@ -2,6 +2,10 @@
 {
     public List<int> fileContent;
     int steps;
+    /// <summary>
+    /// Sorter class
+    /// </summary>
+    /// <param name="f">File content</param>
     public Sorter(List<int> f)
     {
         int[] temp = new int[f.Count];
@@ -9,10 +13,17 @@
         fileContent = temp.ToList();
         steps = 0;
     }
+    /// <summary>
+    /// Prints the number of steps
+    /// </summary>
     public void getSteps()
     {
         Console.WriteLine("Steps: " + steps);
     }
+    /// <summary>
+    /// Bubble sort algorithm
+    /// </summary>
+    /// <returns>The sorted file contents</returns>
     public List<int> bubble()
     {
         bool swapped = false;
@@ -36,6 +47,11 @@
         } while (swapped);        
         return fileContent;
     }
+    /// <summary>
+    /// QuickSort Algortihm
+    /// </summary>
+    /// <param name="unsortedList">List to be sorted</param>
+    /// <returns>Sorted List</returns>
     public List<int> quickSort(List<int> unsortedList)
     {
         int pivot;
@@ -69,6 +85,11 @@
         lessThanPivot.AddRange(greaterThanPivot);
         return lessThanPivot;
     }
+    /// <summary>
+    /// Merge sort algorithm
+    /// </summary>
+    /// <param name="unsortedList">Unsorted List</param>
+    /// <returns>Sorted List</returns>
     public List<int> mergeSort(List<int> unsortedList)
     {
         int n = unsortedList.Count;
@@ -86,6 +107,13 @@
 
         return Merge(left, right);
     }
+
+    /// <summary>
+    /// Merges two sides of merge sort together
+    /// </summary>
+    /// <param name="left">Left side of the mergesort</param>
+    /// <param name="right">Right side of the mergesort</param>
+    /// <returns>The merged List</returns>
     private List<int> Merge(List<int> left, List<int> right)
     {
         List<int> mergedList = new List<int>();
@@ -117,6 +145,11 @@
         }
         return mergedList;
     }
+    /// <summary>
+    /// Insertion sort algorithm
+    /// </summary>
+    /// <param name="array">List to be sorted</param>
+    /// <returns>The sorted list</returns>
     public List<int> InsertionSort(List<int> array)
     {
         for(int i = 0; i < array.Count; i++)

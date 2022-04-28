@@ -1,11 +1,8 @@
 ﻿internal class Program
 {
-
     Reader r = new Reader();
     public static void Main(string[] args)
     {
-        //tester();
-        //Console.ReadLine();
         Program p = new Program();
         Console.WriteLine("Search and Sort Program");
         Console.WriteLine("--MENU--");
@@ -31,6 +28,9 @@
         }
         //searchTester();
     }
+    /// <summary>
+    /// Prints the list of Share files for menu purposes
+    /// </summary>
     void printFiles()
     {
 
@@ -39,6 +39,10 @@
             Console.WriteLine(i + 1 + ". " + r.shares[i].filename);
         }
     }
+    /// <summary>
+    /// Gets the file to be sort/searched from user input
+    /// </summary>
+    /// <returns>Selected file</returns>
     Share selectFileMenu()
     {
         bool valid = false;
@@ -74,6 +78,9 @@
         }
         return file;
     }
+    /// <summary>
+    /// Gets the number to be searched for and the search method
+    /// </summary>
     void searchMenu()
     {
         bool valid = false;
@@ -120,6 +127,9 @@
             }
         }
     }
+    /// <summary>
+    /// Gets the sort method
+    /// </summary>
     void sortMenu()
     {
         Share file = selectFileMenu();
@@ -155,6 +165,10 @@
             }
         }
     }
+    /// <summary>
+    /// Prints every 10th value of the sorted list
+    /// </summary>
+    /// <param name="array"></param>
     static void printList(List<int> array)
     {
         for (int i = 9; i < array.Count; i += 10)
@@ -162,12 +176,21 @@
             Console.WriteLine(array[i]);
         }
     }
+    /// <summary>
+    /// Prints the time taken for a given operation
+    /// </summary>
+    /// <param name="start">Start time of the operation</param>
+    /// <param name="end">End time of the operation</param>
     static void printTime(DateTime start, DateTime end)
     {
         TimeSpan duration = end - start;
         Console.WriteLine("Sort took " + duration.TotalSeconds + " Seconds");
     }
-    
+    /// <summary>
+    /// Sorting menu
+    /// </summary>
+    /// <param name="file">file to be sorted</param>
+    /// <param name="flag">Selects the corresponding sorting algorithm</param>
     static void Sort(Share file, int flag)
     {
         Console.WriteLine(file.filename);
@@ -194,6 +217,12 @@
         printTime(start, end);
         s.getSteps();
     }
+    /// <summary>
+    /// Search method
+    /// </summary>
+    /// <param name="file">file to be searched</param>
+    /// <param name="flag">selects the corresponding algorithm</param>
+    /// <param name="target">the integer to be found</param>
     static void Search(Share file, int flag, int target)
     {
         List<int> indicies = new List<int>();
@@ -227,78 +256,5 @@
         }
         printTime(start, end);
         s.getSteps();
-    }
-    static void searchTester()
-    {
-        Reader reader = new Reader();
-        Sorter sorter = new Sorter(reader.shares[1].content);
-        List<int> sortedList = sorter.quickSort(sorter.fileContent);
-        Searcher s = new Searcher();
-        List<int> indicies = s.BinarySearch(sortedList, 14);
-        if (indicies.Count > 0)
-        {
-            foreach (int i in indicies)
-            {
-                Console.WriteLine(sortedList[i]);
-                Console.WriteLine("target found at index:" + i);
-
-            }
-        }
-        else
-        {
-            Console.WriteLine("target not found");
-        }
-    }
-    /*public async void write(string file)
-    {
-        await File.WriteAllTextAsync(file, "hello there");
-    }*/
-
-
-
-    static void tester()
-    {
-        Reader r = new Reader();
-        //INSERTION SORT
-        Console.WriteLine("\nInsertion Sort");
-        Console.WriteLine(r.shares[1].filename);
-        Sorter b4 = new Sorter(r.shares[1].content);
-        List<int> insertionSorted = b4.InsertionSort(b4.fileContent);
-        for (int i = 9; i < insertionSorted.Count; i += 10)
-        {
-            Console.WriteLine(insertionSorted[i]);
-        }
-        b4.getSteps();
-        //BUBBLE SORT
-        Console.WriteLine("BubbleSort");
-        Console.WriteLine(r.shares[1].filename);
-        Sorter b = new Sorter(r.shares[1].content);
-        List<int> sortedList = b.bubble();
-        for (int i = 9; i < sortedList.Count; i += 10)
-        {
-            Console.WriteLine(sortedList[i]);
-        }
-        b.getSteps();
-        //QUICKSORT
-        Console.WriteLine("\nQuick Sort");
-        Console.WriteLine(r.shares[1].filename);
-        Sorter b2 = new Sorter(r.shares[1].content);
-        List<int> quickSorted = b2.quickSort(b2.fileContent);
-        for (int i = 9; i < quickSorted.Count; i += 10)
-        {
-            Console.WriteLine(quickSorted[i]);
-        }
-        b2.getSteps();
-        //MERGE SORT
-        Console.WriteLine("\nMerge Sort");
-        Console.WriteLine(r.shares[1].filename);
-        Sorter b3 = new Sorter(r.shares[1].content);
-        List<int> mergeSorted = b3.mergeSort(b3.fileContent);
-        for (int i = 9; i < mergeSorted.Count; i += 10)
-        {
-            Console.WriteLine(mergeSorted[i]);
-        }
-        b3.getSteps();
-
     }
 }
