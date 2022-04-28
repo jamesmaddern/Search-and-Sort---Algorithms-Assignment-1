@@ -57,8 +57,7 @@
             steps++;
             if (array[i] == target)
             {
-                do
-                
+                do                
                 {
                     indicies.Add(i);
                     i++;

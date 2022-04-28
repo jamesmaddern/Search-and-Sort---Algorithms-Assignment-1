@@ -23,6 +23,7 @@
             for(int i = 1; i < fileContent.Count; i++)
             {
                 
+                
                 if (fileContent[i-1] > fileContent[i])
                 {
                     steps++;
